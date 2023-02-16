@@ -10,8 +10,15 @@ KEY_FILE = "key.pem"
 
 # main code
 server = http.server.HTTPServer((HOST, PORT), http.server.SimpleHTTPRequestHandler)
-server.socket = ssl.wrap_socket(server.socket, certfile=CERTIFICATE_FILE, keyfile=KEY_FILE, server_side=True)
+
+context = ssl.create_default_context(ssl.Purpose.CLIENT_AUTH)
+context.load_cert_chain(certfile=CERTIFICATE_FILE, keyfile=KEY_FILE)
+
+server.socket = context.wrap_socket(server.socket, server_side=True)
 
 print(f"Server started at https://{HOST}:{PORT}")
 
-server.serve_forever()
+try:
+    server.serve_forever()
+except KeyboardInterrupt:
+    exit(0)
