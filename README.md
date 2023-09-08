@@ -3,7 +3,7 @@ A simple website made in raw HTML + CSS + JS to read NFC tags and display messag
 
 ## Usage
 ### Online
-You can use the website at [nfc.bemxio.xyz](https://nfc.bemxio.xyz), if you just want to test it out.
+~~You can use the website at [nfc.bemxio.xyz](https://nfc.bemxio.xyz), if you just want to test it out.~~ For now, you need to run it locally, however maybe in the future, I will make it go back online at the subdomain.
 
 ### Locally
 If you want to run it locally though, you will need a web server.
