@@ -1,17 +1,13 @@
-if (window.location.search.includes("debug")) {
-    eruda.init();
-}
-
 const terminal = document.getElementById("console-output");
 const button = document.getElementById("activate-nfc");
 
-async function main() {
+async function scanNFC() {
+    button.disabled = true;
+
     if (!("NDEFReader" in window)) {
         return alert("Couldn't find `NDEFReader`. Make sure you're running this website on a mobile device, with Chrome or Opera.\n");
     }
 
-    button.disabled = true;
-    
     const nfc = new NDEFReader();
 
     try {
@@ -41,4 +37,4 @@ async function main() {
     });
 }
 
-button.addEventListener("click", main);
+button.addEventListener("click", scanNFC);
