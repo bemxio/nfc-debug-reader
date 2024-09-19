@@ -5,7 +5,7 @@ async function scanNFC() {
     button.disabled = true;
 
     if (!("NDEFReader" in window)) {
-        return alert("Couldn't find `NDEFReader`. Make sure you're running this website on a mobile device, with Chrome or Opera.\n");
+        return alert("Couldn't find NDEFReader. Make sure you're running this website on a mobile device, with Chrome or Opera.\n");
     }
 
     const nfc = new NDEFReader();
