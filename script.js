@@ -5,7 +5,7 @@ async function scanNFC() {
     button.disabled = true;
 
     if (!("NDEFReader" in window)) {
-        return alert("Couldn't find NDEFReader. Make sure you're running this website on a mobile device, with Chrome or Opera.\n");
+        return alert("Couldn't find NDEFReader. Make sure you're running this website on Android, with Chrome or Opera.\n");
     }
 
     const nfc = new NDEFReader();
@@ -13,7 +13,7 @@ async function scanNFC() {
     try {
         await nfc.scan();
     } catch (error) {
-        terminal.innerText += error + "\n";
+        terminal.innerText += `Error: ${error}\n`;
     }
 
     nfc.addEventListener("reading", (event) => {
@@ -33,7 +33,7 @@ async function scanNFC() {
     });
 
     nfc.addEventListener("readingerror", (event) => {
-        terminal.innerText += "Error: " + event.error;
+        terminal.innerText += "Error: Reading NFC tag failed.\n";
     });
 }
 
